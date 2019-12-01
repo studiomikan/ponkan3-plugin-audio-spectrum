@@ -27,7 +27,7 @@ var AudioSpectrum = function(ponkan) {
   this.init = (buf, lay) => {
     var soundBuf = ponkan.getSoundBuffer(buf);
     layer = ponkan.getLayers({ lay: lay })[0];
-    pas = new PonAudioSpectrum(PonAudioVisualizerType.Solid, {});
+    pas = new PonAudioSpectrum(PonAudioSpectrum.VisualizerType.Solid, {});
     pas.setAudio(soundBuf.howl);
     layer.loadCanvas(pas.canvas);
   };
