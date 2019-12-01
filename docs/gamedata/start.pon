@@ -1,0 +1,16 @@
+# ゲーム開始スクリプト
+;call file: "script/init_system.pon"
+;call file: "audio-spectrum-plugin.pon"
+
+こんにちは。
+;p
+
+;loadsound buf: 0, file: "sound/ohka_japan.mp3"
+;init_audio_spectrum buf: 0, lay: 30
+;layopt lay: 30, x: 200, y: 200, visible: true
+;playsound buf: 0
+
+再生中（クリックで停止）。
+;p
+;stopsound buf: 0
+;free_audio_spectrum

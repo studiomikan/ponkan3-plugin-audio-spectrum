@@ -1,0 +1,50 @@
+---
+// Audio PonAudioSpectrum https://github.com/okayumoka/pon-audio-spectrum
+//@include PonAudioSpectrum
+
+var AudioSpectrum = function(ponkan) {
+  var ponkan = ponkan;
+  var pas = null;
+  var layer = null;
+
+  this.destroy = function() {
+    if (pas != null) {
+      pas.destroy();
+      pas = null;
+    }
+    if (layer != null) {
+      layer.freeCanvas();
+      layer = null;
+    }
+  }
+  this.beforeDraw = function(tick) {
+    if (pas != null && pas.isReady && layer.visible) {
+      pas.draw();
+      layer.width = pas.canvas.width;
+      layer.height = pas.canvas.height;
+    }
+  }
+  this.init = (buf, lay) => {
+    var soundBuf = ponkan.getSoundBuffer(buf);
+    layer = ponkan.getLayers({ lay: lay })[0];
+    pas = new PonAudioSpectrum(PonAudioSpectrum.VisualizerType.Solid, {});
+    pas.setAudio(soundBuf.howl);
+    layer.loadCanvas(pas.canvas);
+  };
+
+  this.destroy= () => {
+  };
+};
+
+ponkan.addPlugin("audio-spectrum", new AudioSpectrum(window.ponkan));
+---
+
+;macro name: "init_audio_spectrum"
+  - ponkan.getPlugin("audio-spectrum").init(mp.buf, mp.lay);
+;endmacro
+
+;macro name: "free_audio_spectrum"
+  - ponkan.getPlugin("audio-spectrum").destroy();
+;endmacro
+
+;return
