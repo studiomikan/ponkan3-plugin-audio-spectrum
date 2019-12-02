@@ -1,3 +1,5 @@
+# Audio Spectrum Plugin for Ponkan3
+*init
 ---
 // Audio PonAudioSpectrum https://github.com/okayumoka/pon-audio-spectrum
 //@include PonAudioSpectrum
@@ -39,6 +41,7 @@ var AudioSpectrum = function(ponkan) {
 ponkan.addPlugin("audio-spectrum", new AudioSpectrum(window.ponkan));
 ---
 
+*define_macro
 ;macro name: "init_audio_spectrum"
   - ponkan.getPlugin("audio-spectrum").init(mp.buf, mp.lay);
 ;endmacro
