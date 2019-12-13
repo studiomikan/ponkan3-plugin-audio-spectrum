@@ -9,7 +9,7 @@ var AudioSpectrum = function(ponkan) {
   var pas = null;
   var layer = null;
 
-  this.destroy = function() {
+  this.destroy = () => {
     if (pas != null) {
       pas.destroy();
       pas = null;
@@ -19,22 +19,28 @@ var AudioSpectrum = function(ponkan) {
       layer = null;
     }
   }
-  this.beforeDraw = function(tick) {
+  this.beforeDraw = (tick) => {
     if (pas != null && pas.isReady && layer.visible) {
       pas.draw();
       layer.width = pas.canvas.width;
       layer.height = pas.canvas.height;
     }
   }
-  this.init = (buf, lay) => {
+  var getType = this.getType = (typeStr) => {
+    switch (typeStr) {
+      case "solid": return PonAudioSpectrum.VisualizerType.Solid;
+      case "block": return PonAudioSpectrum.VisualizerType.Block;
+      default: return PonAudioSpectrum.VisualizerType.Solid;
+    }
+  };
+  this.init = (buf, lay, typeStr, opts) => {
     var soundBuf = ponkan.getSoundBuffer(buf);
     layer = ponkan.getLayers({ lay: lay })[0];
-    pas = new PonAudioSpectrum(PonAudioSpectrum.VisualizerType.Solid, {});
+    pas = new PonAudioSpectrum(getType(typeStr), opts != null ? opts : {});
     pas.setAudio(soundBuf.howl);
     layer.loadCanvas(pas.canvas);
   };
-
-  this.destroy= () => {
+  this.destroy = () => {
   };
 };
 
@@ -43,7 +49,7 @@ ponkan.addPlugin("audio-spectrum", new AudioSpectrum(window.ponkan));
 
 *define_macro
 ;macro name: "init_audio_spectrum"
-  - ponkan.getPlugin("audio-spectrum").init(mp.buf, mp.lay);
+  - ponkan.getPlugin("audio-spectrum").init(mp.buf, mp.lay, mp.type, mp.options);
 ;endmacro
 
 ;macro name: "free_audio_spectrum"
@@ -51,3 +57,4 @@ ponkan.addPlugin("audio-spectrum", new AudioSpectrum(window.ponkan));
 ;endmacro
 
 ;return
+

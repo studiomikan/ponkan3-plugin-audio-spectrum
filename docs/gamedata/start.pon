@@ -6,7 +6,7 @@
 ;p
 
 ;loadsound buf: 0, file: "sound/ohka_japan.mp3"
-;init_audio_spectrum buf: 0, lay: 30
+;init_audio_spectrum buf: 0, lay: 30, type: "solid", options: {}
 ;layopt lay: 30, x: 200, y: 200, visible: true
 ;playsound buf: 0
 
