@@ -57,4 +57,3 @@ ponkan.addPlugin("audio-spectrum", new AudioSpectrum(window.ponkan));
 ;endmacro
 
 ;return
-
