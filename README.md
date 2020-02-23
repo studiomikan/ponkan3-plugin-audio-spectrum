@@ -1,10 +1,10 @@
-# ponkan3-plugin-audio-spectrum
-Audio spectrum plugin for Ponkan3
+# ponkan-plugin-audio-spectrum
+Audio spectrum plugin for Ponkan
 
 [pon-audio-spectrum](https://github.com/studiomikan/pon-audio-spectrum) を用いて、
-[Ponkan3](https://github.com/studiomikan/ponkan3) 製のゲームでオーディオスペクトラムを表示するプラグインです。
+[Ponkan](https://github.com/studiomikan/ponkan) 製のゲームでオーディオスペクトラムを表示するプラグインです。
 
-デモ: https://studiomikan.github.io/ponkan3-plugin-audio-spectrum/
+デモ: https://studiomikan.github.io/ponkan-plugin-audio-spectrum/
 
 ## はじめかた
 
@@ -55,7 +55,7 @@ Audio spectrum plugin for Ponkan3
 [pon-audio-spectrumのREADME](https://github.com/studiomikan/pon-audio-spectrum#%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3)
 を参照してください。
 
-## External Libraries used by ponkan3-plugin-audio-spectrum
+## External Libraries used by ponkan-plugin-audio-spectrum
 
 ### Fonts
 
@@ -68,4 +68,4 @@ Audio spectrum plugin for Ponkan3
 
 ## License
 
-ponkan3-plugin-audio-spectrum is released under the MIT License.
+ponkan-plugin-audio-spectrum is released under the MIT License.
